@@ -12,7 +12,7 @@ Send a POST request to `http://www.binaryweather.co.za/api/authenticate.php` wit
   loginRoot["username"] = "<username>";
   loginRoot["password"] = "<password>";
   
-  String url = "/binaryweather/api/authenticate.php";
+  String url = "/api/authenticate.php";
   postRequest("POST", &client, url, loginRoot, false);
 ```
 This should return a JSON object containing the JWT Token
@@ -39,7 +39,7 @@ Send a PUT request to `http://www.binaryweather.co.za/api/datapoint.php` with a 
   dataRoot["tstamp"] = unixTimestamp; // optional - server will use current date/time if omitted
   dataRoot["value"] = sensorValue;
 
-  String url = "/binaryweather/api/datapoint.php";
+  String url = "/api/datapoint.php";
   postRequest("PUT", &client, url, dataRoot, true);
 ```
 
@@ -48,8 +48,8 @@ This is an example of one way to post requests to the server.
 ```c++
 void postRequest(const char* method, WiFiClient* client, String url, JsonObject& jsonRoot, bool needKey) {
   // This will send the request to the server
-  client->print(method); // POST /auth/login HTTP/1.1
-  client->print(" "); // POST /binaryweather/api/authenticate.php HTTP/1.1
+  client->print(method);
+  client->print(" "); // POST //api/authenticate.php HTTP/1.1
   client->print(url);
   client->println(" HTTP/1.1");
 
